@@ -1,0 +1,21 @@
+version: '3'
+
+services: 
+  
+  flask:
+    build: .
+    tty: true
+    restart: always
+    volumes:
+      - ./data:/web/data
+    environment: 
+      - VIRTUAL_HOST=flask.localhost
+    networks: 
+      common:
+        aliases: 
+          - flask.localhost
+
+networks: 
+  common:
+    external:
+      name: common
